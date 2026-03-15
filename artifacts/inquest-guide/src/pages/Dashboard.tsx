@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { BookOpen, CheckCircle, Clock, ChevronRight, GraduationCap } from "lucide-react";
+import { BookOpen, CheckCircle, Clock, ChevronRight, GraduationCap, ExternalLink } from "lucide-react";
 import { useProgress } from "@/hooks/use-app";
 import { sections } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -50,10 +50,20 @@ export default function Dashboard() {
             <p className="text-lg text-muted-foreground max-w-xl">
               A comprehensive guide for healthcare professionals. Learn the process, write impeccable statements, and attend with confidence.
             </p>
-            <div className="pt-4">
+            <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link href={sections[0].id ? `/section/${sections[0].id}` : "#"} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
                 Start Learning <ChevronRight className="w-5 h-5" />
               </Link>
+              <a
+                href="https://www.cambridge.org/core/books/clinicians-brief-guide-to-the-coroners-court-and-inquests/BE6C8CC8B278B1BE12B574B60F16B8C6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border-2 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/60 transition-all duration-200"
+              >
+                <BookOpen className="w-4 h-4" />
+                Buy the Book
+                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+              </a>
             </div>
           </div>
 
@@ -165,6 +175,35 @@ export default function Dashboard() {
           })}
         </div>
       </div>
+
+      {/* Book Credit Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mt-8 rounded-2xl border-2 border-primary/20 bg-primary/5 p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5"
+      >
+        <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary flex items-center justify-center shadow-md">
+          <BookOpen className="w-7 h-7 text-primary-foreground" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">Based on</p>
+          <h3 className="font-display font-bold text-foreground text-base leading-snug">
+            A Clinician's Brief Guide to the Coroner's Court and Inquests
+          </h3>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            Edited by Gabrielle Pendlebury &amp; Derek Tracy &mdash; Cambridge University Press / RCPsych
+          </p>
+        </div>
+        <a
+          href="https://www.cambridge.org/core/books/clinicians-brief-guide-to-the-coroners-court-and-inquests/BE6C8CC8B278B1BE12B574B60F16B8C6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-md shadow-primary/20 whitespace-nowrap"
+        >
+          Buy on Cambridge <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      </motion.div>
     </div>
   );
 }
