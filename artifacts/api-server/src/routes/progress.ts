@@ -4,7 +4,7 @@ import { eq, and } from "drizzle-orm";
 
 const router: IRouter = Router();
 
-const SECTIONS = ["section1", "section2", "section3", "section4"];
+const SECTIONS = ["purpose", "statement", "witness", "post-inquest"];
 
 function getSessionId(req: any): string {
   return req.cookies?.sessionId || "default-session";
