@@ -55,7 +55,7 @@ export default function Dashboard() {
                 Start Learning <ChevronRight className="w-5 h-5" />
               </Link>
               <a
-                href="https://www.cambridge.org/core/books/clinicians-brief-guide-to-the-coroners-court-and-inquests/BE6C8CC8B278B1BE12B574B60F16B8C6"
+                href="https://www.amazon.co.uk/Clinicians-Brief-Guide-Coroners-Inquests/dp/1009450093/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border-2 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/60 transition-all duration-200"
@@ -196,12 +196,12 @@ export default function Dashboard() {
           </p>
         </div>
         <a
-          href="https://www.cambridge.org/core/books/clinicians-brief-guide-to-the-coroners-court-and-inquests/BE6C8CC8B278B1BE12B574B60F16B8C6"
+          href="https://www.amazon.co.uk/Clinicians-Brief-Guide-Coroners-Inquests/dp/1009450093/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-md shadow-primary/20 whitespace-nowrap"
         >
-          Buy on Cambridge <ExternalLink className="w-3.5 h-3.5" />
+          Buy on Amazon <ExternalLink className="w-3.5 h-3.5" />
         </a>
       </motion.div>
     </div>
