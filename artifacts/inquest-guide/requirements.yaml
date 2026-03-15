@@ -1,0 +1,16 @@
+packages:
+  "framer-motion": "For smooth page transitions and interactive element animations to create a premium feel."
+  "clsx": "Utility for constructing className strings conditionally."
+  "tailwind-merge": "Utility to safely merge Tailwind CSS classes without style conflicts."
+
+images:
+  - path: "artifacts/inquest-guide/public/images/medical-hero.png"
+    description: "Abstract, elegant, modern medical background in soft deep blues and clean whites. Professional, trustworthy, calm, geometric overlapping subtle shapes. Very minimal."
+    aspect_ratio: "21:9"
+  - path: "artifacts/inquest-guide/public/images/logo.png"
+    description: "A minimal, modern logo icon for a legal-medical application. A stylized blend of a medical cross and a legal scale in soft deep blue, on a transparent background."
+    aspect_ratio: "1:1"
+
+notes:
+  - "Assuming @workspace/api-client-react provides useGetProgress, useUpdateProgress, useSubmitQuizAnswer and their related types."
+  - "The API for quiz submission returns the correct status and an explanation. We will show this feedback immediately after each question."

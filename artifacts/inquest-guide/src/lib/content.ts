@@ -1,0 +1,186 @@
+export interface QuizQuestion {
+  id: string;
+  text: string;
+}
+
+export interface SectionContent {
+  id: string;
+  title: string;
+  description: string;
+  content: {
+    title: string;
+    body: string[];
+    callout?: { type: "warning" | "info"; text: string };
+  }[];
+  quiz: QuizQuestion[];
+}
+
+export const sections: SectionContent[] = [
+  {
+    id: "purpose",
+    title: "1. The Purpose of an Inquest",
+    description: "Understand the inquisitorial nature of the coroner's court.",
+    content: [
+      {
+        title: "The Inquisitorial Process",
+        body: [
+          "Unlike criminal or civil courts which are adversarial (parties against each other), a coroner's court is inquisitorial. The coroner's role is to discover the truth about a death, not to assign blame.",
+          "A coroner's inquest must answer four key questions:",
+          "1. Who the deceased was.",
+          "2. Where they came by their death.",
+          "3. When they came by their death.",
+          "4. How (or in what circumstances) the deceased came by their death."
+        ]
+      },
+      {
+        title: "Pre-Inquest Review Hearings (PIRH)",
+        body: [
+          "In complex cases, the coroner may hold a Pre-Inquest Review Hearing.",
+          "The purpose of a PIRH is to decide the scope of the full inquest, identify which witnesses will need to give evidence, determine what further reports are needed, and plan the dates for the final hearing."
+        ]
+      },
+      {
+        title: "Juries & Rule 23",
+        body: [
+          "The vast majority of inquests are held by a coroner sitting alone. Only about 1% of inquests will have a jury (e.g., deaths in state custody or workplace accidents).",
+          "Under Rule 23, the coroner can admit written evidence if the maker of the statement cannot attend, or if the evidence is unlikely to be disputed. This means you may provide a statement but not be called to physically attend."
+        ]
+      }
+    ],
+    quiz: [
+      { id: "s1-q1", text: "A coroner's inquest must answer four questions: who died, where, when, and how (or in what circumstances) the deceased came by their death." },
+      { id: "s1-q2", text: "In complex cases the coroner may hold a Pre-Inquest Review Hearing (PIRH) to decide scope, identify witnesses, and plan dates." },
+      { id: "s1-q3", text: "About 10% of inquests will have a jury." }
+    ]
+  },
+  {
+    id: "statement",
+    title: "2. Request for a Statement",
+    description: "Guidance on writing statements and reports for the coroner.",
+    content: [
+      {
+        title: "The Importance of Your Statement",
+        body: [
+          "Taking time to produce a clear and comprehensive statement can provide catharsis for the clinician and act as excellent preparation for giving evidence.",
+          "Your statement forms the foundation of your evidence. It is crucial it is accurate, professional, and within the scope of your knowledge."
+        ],
+        callout: {
+          type: "info",
+          text: "Accuracy is more important than speed. Ensure you have access to the full medical records before writing your statement."
+        }
+      },
+      {
+        title: "Dos and Don'ts",
+        body: [
+          "DO: Structure it chronologically. Use clear headings.",
+          "DO: Ensure it is typed, signed, and dated.",
+          "DO: Explain medical terms in plain English. The coroner and family are laypeople in medical matters.",
+          "DON'T: Speculate or give opinions outside your area of expertise.",
+          "DON'T: Criticize colleagues or other teams. Stick to your factual involvement."
+        ]
+      },
+      {
+        title: "Supplementary Statements",
+        body: [
+          "You may be asked to provide a supplementary statement if new evidence comes to light or if the coroner needs clarification on a specific point. Treat this with the same care as the original."
+        ]
+      }
+    ],
+    quiz: [
+      { id: "s2-q1", text: "Taking time to produce a clear and comprehensive statement can provide catharsis for the clinician and act as excellent preparation for giving evidence." },
+      { id: "s2-q2", text: "Your statement should be typed, signed and dated." },
+      { id: "s2-q3", text: "It is important to submit your statement as quickly as possible, even if it means less accuracy." }
+    ]
+  },
+  {
+    id: "witness",
+    title: "3. Attending as a Witness",
+    description: "Preparation, witness types, and tips for giving evidence.",
+    content: [
+      {
+        title: "GMC Guidance on Honesty",
+        body: [
+          "The GMC states you must be honest and trustworthy when giving evidence. You must make sure that any evidence you give or documents you write are not false or misleading.",
+          "You must take reasonable steps to check the information is accurate, not deliberately leave out relevant information, not minimize risks of harm, and not present opinion as established fact."
+        ]
+      },
+      {
+        title: "Types of Witness",
+        body: [
+          "Witness of Fact: Indicates the coroner believes your involvement to be peripheral. Your statement forms the basis of your evidence.",
+          "Interested Person (IP): Indicates you are more centrally involved in the circumstances leading to death. As an IP you are entitled to legal representation, receive disclosure of documents, and can ask questions of other witnesses.",
+          "Expert Witness: Called to give an independent opinion based on specialist knowledge, usually with no personal involvement in the treatment."
+        ],
+        callout: {
+          type: "warning",
+          text: "It is crucial you know your status before attending. If you are an Interested Person, you should immediately contact your Medical Defence Organisation (MDO)."
+        }
+      },
+      {
+        title: "On the Day",
+        body: [
+          "Dress smartly in business attire.",
+          "When called, you will be asked to 'swear in' by reading an oath on a holy book or a non-denominational statement of truth.",
+          "Direct your answers to the coroner, addressing them as 'Sir' or 'Madam'.",
+          "Keep answers brief, factual, and in non-technical language.",
+          "Do not leave the court until the coroner explicitly releases you."
+        ]
+      }
+    ],
+    quiz: [
+      { id: "s3-q1", text: "You should address the coroner as Sir or Madam." },
+      { id: "s3-q2", text: "You can leave the court once you have finished your evidence." },
+      { id: "s3-q3", text: "When called to give evidence, you will be asked to swear in by reading an oath or affirmation." }
+    ]
+  },
+  {
+    id: "post-inquest",
+    title: "4. Post Inquest",
+    description: "Conclusions, Regulation 28 reports, and handling criticism.",
+    content: [
+      {
+        title: "The Conclusion",
+        body: [
+          "When all evidence is heard, the coroner will sum up and deliver a conclusion.",
+          "Short form conclusions include: accident/misadventure, natural causes, suicide, lawful/unlawful killing, etc.",
+          "Alternatively, they may make a 'narrative' conclusion setting out the facts surrounding the death in more detail."
+        ]
+      },
+      {
+        title: "Regulation 28 (Prevention of Future Deaths)",
+        body: [
+          "If evidence suggests further avoidable deaths could occur, the coroner has a duty to make a Prevention of Future Deaths report.",
+          "This report is sent to the person or authority that can take preventative steps, and they have a duty to respond within 56 days detailing the action taken or explaining why no action is needed."
+        ]
+      },
+      {
+        title: "Criticism and Next Steps",
+        body: [
+          "While an inquest does not determine criminal or civil liability directly, civil proceedings for damages may follow once facts are established.",
+          "If a doctor is criticized by the coroner, they are required by the GMC to inform them without delay. This may result in an investigation.",
+          "Always seek support from your MDO and colleagues. An inquest is stressful, and psychological support should be utilized if you feel overwhelmed."
+        ],
+        callout: {
+          type: "warning",
+          text: "Never ignore criticism from a coroner. Inform your MDO immediately to plan targeted CPD and evidence of remediation."
+        }
+      }
+    ],
+    quiz: [
+      { id: "s4-q1", text: "When the coroner has heard all evidence, they will deliver a conclusion - this can be short form or a narrative conclusion." },
+      { id: "s4-q2", text: "A Prevention of Future Death report requires a response within 56 days." },
+      { id: "s4-q3", text: "If criticised by the coroner, you should ignore this as it has no consequences." }
+    ]
+  }
+];
+
+export const checklistItems = [
+  "Read through your report/statement thoroughly.",
+  "Review the complete medical records.",
+  "Be clear who has called you to attend and what your status is (Fact vs IP).",
+  "Find out exactly where the court is and plan your travel time.",
+  "Find out how long you will be needed for the hearing.",
+  "Ensure the medical records will be available at the court.",
+  "Make sure you have adequate clinical cover arrangements in place for your absence.",
+  "Contact your MDO if you have any concerns or are designated an Interested Person.",
+];

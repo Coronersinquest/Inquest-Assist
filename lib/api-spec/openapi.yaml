@@ -1,15 +1,18 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Inquest Preparation Guide API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: progress
+    description: User progress tracking
+  - name: quiz
+    description: Quiz answers
 paths:
   /healthz:
     get:
@@ -24,6 +27,56 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /progress:
+    get:
+      operationId: getProgress
+      tags: [progress]
+      summary: Get user progress
+      description: Returns progress for all sections
+      responses:
+        "200":
+          description: Progress data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Progress"
+    post:
+      operationId: updateProgress
+      tags: [progress]
+      summary: Update section progress
+      description: Mark a section as complete or update progress
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProgressRequest"
+      responses:
+        "200":
+          description: Updated progress
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Progress"
+  /quiz:
+    post:
+      operationId: submitQuizAnswer
+      tags: [quiz]
+      summary: Submit a quiz answer
+      description: Submit an answer to a quiz question and get feedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuizAnswerRequest"
+      responses:
+        "200":
+          description: Quiz answer result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuizAnswerResult"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +86,66 @@ components:
           type: string
       required:
         - status
-
+    Progress:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/SectionProgress"
+        overallPercent:
+          type: number
+      required:
+        - sections
+        - overallPercent
+    SectionProgress:
+      type: object
+      properties:
+        sectionId:
+          type: string
+        completed:
+          type: boolean
+        quizScore:
+          type: number
+          nullable: true
+        lastVisited:
+          type: string
+          nullable: true
+      required:
+        - sectionId
+        - completed
+        - quizScore
+        - lastVisited
+    UpdateProgressRequest:
+      type: object
+      properties:
+        sectionId:
+          type: string
+        completed:
+          type: boolean
+        quizScore:
+          type: number
+          nullable: true
+      required:
+        - sectionId
+        - completed
+    QuizAnswerRequest:
+      type: object
+      properties:
+        questionId:
+          type: string
+        answer:
+          type: boolean
+      required:
+        - questionId
+        - answer
+    QuizAnswerResult:
+      type: object
+      properties:
+        correct:
+          type: boolean
+        explanation:
+          type: string
+      required:
+        - correct
+        - explanation
