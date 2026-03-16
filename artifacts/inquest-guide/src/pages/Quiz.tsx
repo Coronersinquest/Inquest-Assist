@@ -3,25 +3,23 @@ import { useParams, Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, XCircle, ArrowRight, ArrowLeft, RefreshCcw } from "lucide-react";
 import { sections } from "@/lib/content";
-import { useSubmitQuizAnswer, useUpdateProgress } from "@/hooks/use-app";
+import { useUpdateProgress } from "@/hooks/use-app";
 import { cn } from "@/lib/utils";
 
 export default function Quiz() {
   const { id } = useParams();
   const [, setLocation] = useLocation();
-  const { mutateAsync: submitAnswer, isPending: submitting } = useSubmitQuizAnswer();
   const { mutateAsync: updateProgress } = useUpdateProgress();
 
   const sectionIndex = sections.findIndex(s => s.id === id);
   const section = sections[sectionIndex];
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<boolean | null>(null);
-  const [result, setResult] = useState<{ correct: boolean, explanation: string } | null>(null);
+  const [result, setResult] = useState<{ correct: boolean; explanation: string } | null>(null);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Reset state when section changes
   useEffect(() => {
     setCurrentIndex(0);
     setSelectedAnswer(null);
@@ -36,22 +34,12 @@ export default function Quiz() {
   const currentQuestion = questions[currentIndex];
   const nextSection = sections[sectionIndex + 1];
 
-  const handleAnswer = async (answer: boolean) => {
-    if (result || submitting) return; // Prevent double submit
+  const handleAnswer = (answer: boolean) => {
+    if (result !== null) return;
     setSelectedAnswer(answer);
-    
-    try {
-      // Wait for API simulation/response
-      const res = await submitAnswer({ questionId: currentQuestion.id, answer });
-      setResult(res);
-      if (res.correct) setScore(s => s + 1);
-    } catch (e) {
-      console.error("Failed to submit answer", e);
-      // Fallback local validation if API fails or isn't stubbed correctly
-      // In this specific prompt, questions are True/False. We assume local validation if API errors.
-      // But we will just show a generic error state for simplicity.
-      setResult({ correct: false, explanation: "Failed to verify answer with server." });
-    }
+    const correct = answer === currentQuestion.correctAnswer;
+    setResult({ correct, explanation: currentQuestion.explanation });
+    if (correct) setScore(s => s + 1);
   };
 
   const handleNext = async () => {
@@ -60,9 +48,8 @@ export default function Quiz() {
       setSelectedAnswer(null);
       setResult(null);
     } else {
-      // Finish quiz
-      const finalScore = Math.round(((score + (result?.correct ? 1 : 0)) / questions.length) * 100);
-      await updateProgress({ sectionId: section.id, completed: true, quizScore: finalScore });
+      const finalScore = Math.round((score / questions.length) * 100);
+      updateProgress({ sectionId: section.id, completed: true, quizScore: finalScore }).catch(() => {});
       setIsFinished(true);
     }
   };
@@ -73,7 +60,7 @@ export default function Quiz() {
 
     return (
       <div className="max-w-2xl mx-auto py-12">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="bg-card rounded-3xl p-8 md:p-12 text-center shadow-xl border"
@@ -83,9 +70,9 @@ export default function Quiz() {
           </div>
           <h2 className="text-3xl font-display font-bold mb-2">Quiz Complete!</h2>
           <p className="text-muted-foreground mb-8">You scored {percent}% on this section.</p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button 
+            <button
               onClick={() => {
                 setCurrentIndex(0);
                 setSelectedAnswer(null);
@@ -97,16 +84,16 @@ export default function Quiz() {
             >
               Retake Quiz
             </button>
-            
+
             {nextSection ? (
-              <button 
+              <button
                 onClick={() => setLocation(`/section/${nextSection.id}`)}
                 className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
               >
                 Next Section <ArrowRight className="w-5 h-5" />
               </button>
             ) : (
-              <button 
+              <button
                 onClick={() => setLocation('/')}
                 className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
               >
@@ -133,7 +120,7 @@ export default function Quiz() {
       </div>
 
       <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-        <motion.div 
+        <motion.div
           className="h-full bg-primary"
           initial={{ width: `${(currentIndex / questions.length) * 100}%` }}
           animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
@@ -156,12 +143,14 @@ export default function Quiz() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
-              disabled={result !== null || submitting}
+              disabled={result !== null}
               onClick={() => handleAnswer(true)}
               className={cn(
                 "p-4 rounded-xl border-2 text-lg font-bold transition-all duration-200 flex items-center justify-center gap-2",
-                selectedAnswer === true 
-                  ? "border-primary bg-primary/5 text-primary" 
+                selectedAnswer === true
+                  ? result?.correct
+                    ? "border-green-500 bg-green-500/10 text-green-700"
+                    : "border-destructive bg-destructive/10 text-destructive"
                   : "border-border hover:border-primary/50 hover:bg-muted text-foreground",
                 result !== null && selectedAnswer !== true && "opacity-50 grayscale"
               )}
@@ -169,12 +158,14 @@ export default function Quiz() {
               TRUE
             </button>
             <button
-              disabled={result !== null || submitting}
+              disabled={result !== null}
               onClick={() => handleAnswer(false)}
               className={cn(
                 "p-4 rounded-xl border-2 text-lg font-bold transition-all duration-200 flex items-center justify-center gap-2",
-                selectedAnswer === false 
-                  ? "border-primary bg-primary/5 text-primary" 
+                selectedAnswer === false
+                  ? result?.correct
+                    ? "border-green-500 bg-green-500/10 text-green-700"
+                    : "border-destructive bg-destructive/10 text-destructive"
                   : "border-border hover:border-primary/50 hover:bg-muted text-foreground",
                 result !== null && selectedAnswer !== false && "opacity-50 grayscale"
               )}
@@ -186,15 +177,15 @@ export default function Quiz() {
           <AnimatePresence>
             {result && (
               <motion.div
-                initial={{ opacity: 0, height: 0, mt: 0 }}
-                animate={{ opacity: 1, height: 'auto', mt: 24 }}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
                 className={cn(
-                  "p-4 rounded-xl border",
+                  "mt-6 p-4 rounded-xl border",
                   result.correct ? "bg-green-500/10 border-green-500/20" : "bg-destructive/10 border-destructive/20"
                 )}
               >
                 <div className="flex items-start gap-3">
-                  <div className={cn("mt-0.5", result.correct ? "text-green-600" : "text-destructive")}>
+                  <div className={cn("mt-0.5 flex-shrink-0", result.correct ? "text-green-600" : "text-destructive")}>
                     {result.correct ? <CheckCircle className="w-6 h-6" /> : <XCircle className="w-6 h-6" />}
                   </div>
                   <div>

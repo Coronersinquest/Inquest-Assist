@@ -1,6 +1,8 @@
 export interface QuizQuestion {
   id: string;
   text: string;
+  correctAnswer: boolean;
+  explanation: string;
 }
 
 export interface SectionContent {
@@ -48,9 +50,24 @@ export const sections: SectionContent[] = [
       }
     ],
     quiz: [
-      { id: "s1-q1", text: "A coroner's inquest must answer four questions: who died, where, when, and how (or in what circumstances) the deceased came by their death." },
-      { id: "s1-q2", text: "In complex cases the coroner may hold a Pre-Inquest Review Hearing (PIRH) to decide scope, identify witnesses, and plan dates." },
-      { id: "s1-q3", text: "About 10% of inquests will have a jury." }
+      {
+        id: "s1-q1",
+        text: "A coroner's inquest must answer four questions: who died, where, when, and how (or in what circumstances) the deceased came by their death.",
+        correctAnswer: true,
+        explanation: "Correct. A coroner's inquest must answer four questions: who the deceased was (identity), when and where they came by their death, and how (by what means) — or in what circumstances in Article 2 cases."
+      },
+      {
+        id: "s1-q2",
+        text: "In complex cases the coroner may hold a Pre-Inquest Review Hearing (PIRH) to decide scope, identify witnesses, and plan dates.",
+        correctAnswer: true,
+        explanation: "Correct. In complex cases the coroner may hold a Pre-Inquest Review Hearing (PIRH) with interested persons, to decide on the scope of the investigation, identify witnesses, and to plan the inquest date and duration."
+      },
+      {
+        id: "s1-q3",
+        text: "About 10% of inquests will have a jury.",
+        correctAnswer: false,
+        explanation: "Incorrect. Only about 1% of inquests will have a jury (Ministry of Justice, 2024). A jury is only required in specific circumstances set out in the Coroners and Justice Act 2009."
+      }
     ]
   },
   {
@@ -87,9 +104,24 @@ export const sections: SectionContent[] = [
       }
     ],
     quiz: [
-      { id: "s2-q1", text: "Taking time to produce a clear and comprehensive statement can provide catharsis for the clinician and act as excellent preparation for giving evidence." },
-      { id: "s2-q2", text: "Your statement should be typed, signed and dated." },
-      { id: "s2-q3", text: "It is important to submit your statement as quickly as possible, even if it means less accuracy." }
+      {
+        id: "s2-q1",
+        text: "Taking time to produce a clear and comprehensive statement can provide catharsis for the clinician and act as excellent preparation for giving evidence.",
+        correctAnswer: true,
+        explanation: "Correct. Taking time to produce a clear and comprehensive statement can provide catharsis for the clinician, and it is excellent preparation for giving evidence at the inquest."
+      },
+      {
+        id: "s2-q2",
+        text: "Your statement should be typed, signed and dated.",
+        correctAnswer: true,
+        explanation: "Correct. Your statement should be typed, signed and dated. You should also keep a copy of it in your notes along with a record of how, when and to whom it was submitted."
+      },
+      {
+        id: "s2-q3",
+        text: "It is important to submit your statement as quickly as possible, even if it means less accuracy.",
+        correctAnswer: false,
+        explanation: "Incorrect. Accuracy is more important than speed. You must review the medical records and may need to seek a review from your indemnifier or trust legal team before submitting."
+      }
     ]
   },
   {
@@ -128,9 +160,24 @@ export const sections: SectionContent[] = [
       }
     ],
     quiz: [
-      { id: "s3-q1", text: "You should address the coroner as Sir or Madam." },
-      { id: "s3-q2", text: "You can leave the court once you have finished your evidence." },
-      { id: "s3-q3", text: "When called to give evidence, you will be asked to swear in by reading an oath or affirmation." }
+      {
+        id: "s3-q1",
+        text: "You should address the coroner as Sir or Madam.",
+        correctAnswer: true,
+        explanation: "Correct. You should address the coroner as 'Sir' or 'Madam'. Direct your answers to the coroner rather than to the advocates."
+      },
+      {
+        id: "s3-q2",
+        text: "You can leave the court once you have finished your evidence.",
+        correctAnswer: false,
+        explanation: "Correct. You must not leave court until the coroner releases you. If you are unsure whether you have been released, seek clarification before leaving."
+      },
+      {
+        id: "s3-q3",
+        text: "When called to give evidence, you will be asked to swear in by reading an oath or affirmation.",
+        correctAnswer: true,
+        explanation: "Correct. When called to give evidence, you will be asked to 'swear in' by reading an oath on a holy book, or a non-denominational statement of truth. After this, any failure to tell the truth would amount to perjury."
+      }
     ]
   },
   {
@@ -167,9 +214,24 @@ export const sections: SectionContent[] = [
       }
     ],
     quiz: [
-      { id: "s4-q1", text: "When the coroner has heard all evidence, they will deliver a conclusion - this can be short form or a narrative conclusion." },
-      { id: "s4-q2", text: "A Prevention of Future Death report requires a response within 56 days." },
-      { id: "s4-q3", text: "If criticised by the coroner, you should ignore this as it has no consequences." }
+      {
+        id: "s4-q1",
+        text: "When the coroner has heard all evidence, they will deliver a conclusion - this can be short form or a narrative conclusion.",
+        correctAnswer: true,
+        explanation: "Correct. When the coroner has heard all the evidence, they will 'sum up' and deliver the conclusion. This can be in 'short form' (e.g., suicide, natural causes) or a narrative verdict."
+      },
+      {
+        id: "s4-q2",
+        text: "A Prevention of Future Death report requires a response within 56 days.",
+        correctAnswer: true,
+        explanation: "Correct. The recipient of a Regulation 28 Prevention of Future Death report has a duty to provide a response within 56 days of the date the report is sent."
+      },
+      {
+        id: "s4-q3",
+        text: "If criticised by the coroner, you should ignore this as it has no consequences.",
+        correctAnswer: false,
+        explanation: "Correct. Criticism by a coroner cannot be ignored. You must inform the GMC without delay (as required by Good Medical Practice, paragraph 75) and contact your MDO for guidance."
+      }
     ]
   }
 ];

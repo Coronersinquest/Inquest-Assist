@@ -23,8 +23,10 @@ export default function Section() {
   const isCompleted = sectionProgress?.completed;
 
   const handleComplete = async () => {
-    await updateProgress({ sectionId: section.id, completed: true });
+    // Navigate immediately — don't block on the API call
     setLocation(`/section/${section.id}/quiz`);
+    // Save progress in the background; ignore errors silently
+    updateProgress({ sectionId: section.id, completed: true }).catch(() => {});
   };
 
   return (
