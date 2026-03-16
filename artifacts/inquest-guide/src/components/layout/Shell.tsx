@@ -27,7 +27,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-sidebar border-b border-sidebar-border z-50 flex items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <span className="font-display font-bold text-lg text-sidebar-primary">Inquest Guide</span>
+          <Link href="/" onClick={closeMobile} className="font-display font-bold text-lg text-sidebar-primary no-underline">Inquest Guide</Link>
         </div>
         <button onClick={toggleMobile} className="p-2 -mr-2 text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-white/10 rounded-lg transition-colors">
           {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -49,10 +49,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
           >
             {/* Logo area */}
             <div className="hidden lg:flex items-center gap-3 p-6 border-b border-sidebar-border">
-              <div className="flex flex-col">
+              <Link href="/" className="flex flex-col no-underline">
                 <span className="font-display font-bold text-xl leading-tight text-sidebar-primary">Inquest Guide</span>
                 <span className="text-xs text-sidebar-foreground/60 font-medium">Healthcare Professionals</span>
-              </div>
+              </Link>
             </div>
 
             <div className="flex-1 overflow-y-auto py-6 px-4 space-y-8">
