@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export default function Quiz() {
   const { id } = useParams();
   const [, setLocation] = useLocation();
-  const { mutateAsync: updateProgress } = useUpdateProgress();
+  const { saveProgress } = useUpdateProgress();
 
   const sectionIndex = sections.findIndex(s => s.id === id);
   const section = sections[sectionIndex];
@@ -42,14 +42,14 @@ export default function Quiz() {
     if (correct) setScore(s => s + 1);
   };
 
-  const handleNext = async () => {
+  const handleNext = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(curr => curr + 1);
       setSelectedAnswer(null);
       setResult(null);
     } else {
       const finalScore = Math.round((score / questions.length) * 100);
-      updateProgress({ sectionId: section.id, completed: true, quizScore: finalScore }).catch(() => {});
+      saveProgress({ sectionId: section.id, completed: true, quizScore: finalScore });
       setIsFinished(true);
     }
   };

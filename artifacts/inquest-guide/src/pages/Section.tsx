@@ -9,11 +9,11 @@ export default function Section() {
   const { id } = useParams();
   const [, setLocation] = useLocation();
   const { data: progress } = useProgress();
-  const { mutateAsync: updateProgress, isPending } = useUpdateProgress();
+  const { saveProgress, isPending } = useUpdateProgress();
 
   const sectionIndex = sections.findIndex(s => s.id === id);
   const section = sections[sectionIndex];
-  
+
   if (!section) {
     return <div className="p-8 text-center">Section not found.</div>;
   }
@@ -22,11 +22,9 @@ export default function Section() {
   const sectionProgress = progress?.sections?.find(s => s.sectionId === section.id);
   const isCompleted = sectionProgress?.completed;
 
-  const handleComplete = async () => {
-    // Navigate immediately — don't block on the API call
+  const handleComplete = () => {
     setLocation(`/section/${section.id}/quiz`);
-    // Save progress in the background; ignore errors silently
-    updateProgress({ sectionId: section.id, completed: true }).catch(() => {});
+    saveProgress({ sectionId: section.id, completed: true });
   };
 
   return (

@@ -1,37 +1,38 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { 
-  useGetProgress, 
+import {
+  useGetProgress,
   useUpdateProgress as useApiUpdateProgress,
-  useSubmitQuizAnswer as useApiSubmitQuizAnswer,
   getGetProgressQueryKey
 } from "@workspace/api-client-react";
 
 export function useProgress() {
-  return useGetProgress();
+  return useGetProgress({
+    query: {
+      retry: false,
+      throwOnError: false,
+    },
+  });
 }
 
 export function useUpdateProgress() {
   const queryClient = useQueryClient();
-  const mutation = useApiUpdateProgress();
+  const mutation = useApiUpdateProgress({
+    mutation: {
+      onError: () => {},
+    },
+  });
 
-  return {
-    ...mutation,
-    mutateAsync: async (params: { sectionId: string; completed: boolean; quizScore?: number }) => {
-      const result = await mutation.mutateAsync({ data: params });
-      // Invalidate the progress query so UI updates immediately
-      queryClient.invalidateQueries({ queryKey: getGetProgressQueryKey() });
-      return result;
-    }
+  const saveProgress = (params: { sectionId: string; completed: boolean; quizScore?: number }) => {
+    mutation.mutate(
+      { data: params },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: getGetProgressQueryKey() });
+        },
+        onError: () => {},
+      },
+    );
   };
-}
 
-export function useSubmitQuizAnswer() {
-  const mutation = useApiSubmitQuizAnswer();
-  
-  return {
-    ...mutation,
-    mutateAsync: async (params: { questionId: string; answer: boolean }) => {
-      return await mutation.mutateAsync({ data: params });
-    }
-  };
+  return { saveProgress, isPending: mutation.isPending };
 }
