@@ -1,0 +1,65 @@
+7:42:31 PM: Netlify Build                                                 
+7:42:31 PM: ────────────────────────────────────────────────────────────────
+7:42:31 PM: ​
+7:42:31 PM: ❯ Version
+7:42:31 PM:   @netlify/build 35.8.7
+7:42:31 PM: ​
+7:42:31 PM: ❯ Flags
+7:42:31 PM:   accountId: 69b85474023c9808d8f98f03
+7:42:31 PM:   baseRelDir: true
+7:42:31 PM:   buildId: 69b85d16c428082872bc7547
+7:42:31 PM:   deployId: 69b85d16c428082872bc7549
+7:42:31 PM:   packagePath: artifacts/inquest-guide
+7:42:31 PM: ​
+7:42:31 PM: ❯ Current directory
+7:42:31 PM:   /opt/build/repo
+7:42:31 PM: ​
+7:42:31 PM: ❯ Config file
+7:42:31 PM:   No config file was defined: using default values.
+7:42:31 PM: ​
+7:42:31 PM: ❯ Context
+7:42:31 PM:   production
+7:42:31 PM: ​
+7:42:31 PM: Build command from Netlify app                                
+7:42:31 PM: ────────────────────────────────────────────────────────────────
+7:42:31 PM: ​
+7:42:31 PM: $ pnpm --filter @workspace/inquest-guide... run build
+7:42:31 PM: Scope: 2 of 9 workspace projects
+7:42:31 PM: artifacts/inquest-guide build$ vite build --config vite.config.ts
+7:42:32 PM: artifacts/inquest-guide build: failed to load config from /opt/build/repo/artifacts/inquest-guide/vite.config.ts
+7:42:32 PM: artifacts/inquest-guide build: error during build:
+7:42:32 PM: artifacts/inquest-guide build: Error: PORT environment variable is required but was not provided.
+7:42:32 PM: artifacts/inquest-guide build:     at file:///opt/build/repo/artifacts/inquest-guide/node_modules/.vite-temp/vite.config.ts.timestamp-1773690152050-45193125798a2.mjs:10:9
+7:42:32 PM: artifacts/inquest-guide build:     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+7:42:32 PM: artifacts/inquest-guide build:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+7:42:32 PM: artifacts/inquest-guide build:     at async loadConfigFromBundledFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35909:12)
+7:42:32 PM: artifacts/inquest-guide build:     at async bundleAndLoadConfigFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35797:17)
+7:42:32 PM: artifacts/inquest-guide build:     at async loadConfigFromFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35764:42)
+7:42:32 PM: artifacts/inquest-guide build:     at async resolveConfig (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35413:22)
+7:42:32 PM: artifacts/inquest-guide build:     at async createBuilder (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:33875:19)
+7:42:32 PM: artifacts/inquest-guide build:     at async CAC.<anonymous> (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.1_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/cli.js:629:10)
+7:42:32 PM: artifacts/inquest-guide build: Failed
+7:42:32 PM: /opt/build/repo/artifacts/inquest-guide:
+7:42:32 PM:  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/inquest-guide@0.0.0 build: `vite build --config vite.config.ts`
+7:42:32 PM: Exit status 1
+7:42:32 PM: ​
+7:42:32 PM: "build.command" failed                                        
+7:42:32 PM: ────────────────────────────────────────────────────────────────
+7:42:32 PM: ​
+7:42:32 PM:   Error message
+7:42:32 PM:   Command failed with exit code 1: pnpm --filter @workspace/inquest-guide... run build (https://ntl.fyi/exit-code-1)
+7:42:32 PM: ​
+7:42:32 PM:   Error location
+7:42:32 PM:   In Build command from Netlify app:
+7:42:32 PM:   pnpm --filter @workspace/inquest-guide... run build
+7:42:32 PM: ​
+7:42:32 PM:   Resolved config
+7:42:32 PM:   build:
+7:42:32 PM:     command: pnpm --filter @workspace/inquest-guide... run build
+7:42:32 PM:     commandOrigin: ui
+7:42:32 PM:     publish: /opt/build/repo/artifacts/inquest-guide/dist
+7:42:32 PM:     publishOrigin: ui
+7:42:32 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+7:42:32 PM: Failing build: Failed to build site
+7:42:33 PM: Finished processing build request in 16.75s
+7:42:32 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
