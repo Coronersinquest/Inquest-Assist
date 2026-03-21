@@ -45,7 +45,7 @@ export const sections: SectionContent[] = [
         title: "Juries & Rule 23",
         body: [
           "The vast majority of inquests are held by a coroner sitting alone. Only about 1% of inquests will have a jury (e.g., deaths in state custody or workplace accidents).",
-          "Under Rule 23, the coroner can admit written evidence if the maker of the statement cannot attend, or if the evidence is unlikely to be disputed. This means you may provide a statement but not be called to physically attend."
+          "Under Rule 23, the coroner can admit written evidence if the maker of the statement cannot attend for a valid reason, which would include clinical responsibilities, and if the evidence is unlikely to be disputed. This means you may provide a statement but not be called to physically attend."
         ]
       }
     ],
