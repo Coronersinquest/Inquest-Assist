@@ -3,21 +3,17 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Menu, X, Home, CheckSquare,
-  ChevronRight, Award
+  ChevronRight, Award, Lock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sections } from "@/lib/content";
-import { useProgress } from "@/hooks/use-app";
+import { useProgress, useAllSectionsComplete } from "@/hooks/use-app";
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { data: progressData } = useProgress();
-
-  const navItems = [
-    { label: "Dashboard", href: "/", icon: Home },
-    { label: "Preparation Checklist", href: "/checklist", icon: CheckSquare },
-  ];
+  const allComplete = useAllSectionsComplete();
 
   const toggleMobile = () => setIsMobileOpen(!isMobileOpen);
   const closeMobile = () => setIsMobileOpen(false);
@@ -59,20 +55,36 @@ export function Shell({ children }: { children: React.ReactNode }) {
               {/* Main Navigation */}
               <div className="space-y-1">
                 <p className="px-3 text-xs font-bold uppercase tracking-wider text-sidebar-foreground/40 mb-3">Overview</p>
-                {navItems.map((item) => {
-                  const isActive = location === item.href;
-                  return (
-                    <Link key={item.href} href={item.href} onClick={closeMobile} className={cn(
-                      "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
-                      isActive
-                        ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
-                        : "text-sidebar-foreground/80 hover:bg-white/10 hover:text-sidebar-foreground"
-                    )}>
-                      <item.icon className={cn("w-5 h-5", isActive ? "text-sidebar-primary-foreground" : "text-sidebar-foreground/60")} />
-                      {item.label}
-                    </Link>
-                  );
-                })}
+
+                {/* Dashboard */}
+                <Link href="/" onClick={closeMobile} className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
+                  location === "/"
+                    ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
+                    : "text-sidebar-foreground/80 hover:bg-white/10 hover:text-sidebar-foreground"
+                )}>
+                  <Home className={cn("w-5 h-5", location === "/" ? "text-sidebar-primary-foreground" : "text-sidebar-foreground/60")} />
+                  Dashboard
+                </Link>
+
+                {/* Preparation Checklist — locked until all sections complete */}
+                {allComplete ? (
+                  <Link href="/checklist" onClick={closeMobile} className={cn(
+                    "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
+                    location === "/checklist"
+                      ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
+                      : "text-sidebar-foreground/80 hover:bg-white/10 hover:text-sidebar-foreground"
+                  )}>
+                    <CheckSquare className={cn("w-5 h-5", location === "/checklist" ? "text-sidebar-primary-foreground" : "text-sidebar-foreground/60")} />
+                    Preparation Checklist
+                  </Link>
+                ) : (
+                  <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-sidebar-foreground/30 cursor-not-allowed select-none">
+                    <Lock className="w-5 h-5 text-sidebar-foreground/25" />
+                    <span>Preparation Checklist</span>
+                    <span className="ml-auto text-xs font-semibold bg-white/10 px-2 py-0.5 rounded-full">Locked</span>
+                  </div>
+                )}
               </div>
 
               {/* Sections Navigation */}
