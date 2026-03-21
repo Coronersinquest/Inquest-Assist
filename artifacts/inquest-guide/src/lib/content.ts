@@ -216,12 +216,11 @@ export const sections: SectionContent[] = [
         body: [
           "1. Prepare adequately — re-read your statement, the clinical records, and any relevant protocols or policies beforehand.",
           "2. Decide in advance whether you wish to swear an oath on a holy book or make a non-religious affirmation.",
-          "3. Address the coroner as 'Sir' or 'Ma'am' and direct all your answers to the coroner (and jury, if there is one).",
-          "4. If you do not understand a question, say so. You are entitled to ask for clarification.",
-          "5. Acknowledge the family — the inquest is deeply stressful and upsetting for them. A sincere acknowledgement goes a long way.",
-          "6. If you have observations after hearing other witnesses give evidence, pass these to your legal representative rather than raising them yourself.",
-          "7. Remember the purpose of the inquest: to determine who died, where, when, and how. Keep that purpose in mind throughout your evidence.",
-          "8. Think of it as your opportunity to explain to the family what you know about what happened, so they can better understand the circumstances in which their relative died."
+          "3. If you do not understand a question, say so. You are entitled to ask for clarification.",
+          "4. Acknowledge the family — the inquest is deeply stressful and upsetting for them. A sincere acknowledgement goes a long way.",
+          "5. If you have observations after hearing other witnesses give evidence, pass these to your legal representative rather than raising them yourself.",
+          "6. Remember the purpose of the inquest: to determine who died, where, when, and how. Keep that purpose in mind throughout your evidence.",
+          "7. Think of it as your opportunity to explain to the family what you know about what happened, so they can better understand the circumstances in which their relative died."
         ]
       }
     ],
