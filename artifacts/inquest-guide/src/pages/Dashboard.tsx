@@ -48,7 +48,7 @@ export default function Dashboard() {
               <span className="text-primary">Coroner's Court</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl">
-              Inquest Assist helps UK clinicians prepare for inquests. Complete all four course sections to gain access to the preparation checklist.
+              Inquest Assist helps UK clinicians prepare for inquests. Complete all five course sections to gain access to the preparation checklist.
             </p>
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link href={sections[0].id ? `/section/${sections[0].id}` : "#"} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
@@ -110,7 +110,7 @@ export default function Dashboard() {
           <div className="p-3 bg-accent/10 rounded-xl text-accent"><Clock className="w-6 h-6" /></div>
           <div>
             <p className="text-sm font-medium text-muted-foreground">Est. Time</p>
-            <p className="text-2xl font-bold">~45 mins</p>
+            <p className="text-2xl font-bold">~55 mins</p>
           </div>
         </div>
       </div>

@@ -93,6 +93,36 @@ const QUIZ_ANSWERS: Record<string, { correct: boolean; explanation: string }> = 
     explanation:
       "Incorrect. When called to give evidence, you will be asked to 'swear in' by reading an oath on a holy book, or a non-denominational statement of truth.",
   },
+  "s5-q1-true": {
+    correct: false,
+    explanation:
+      "Incorrect. You should take time to consider your answer carefully before responding. Answering immediately — especially when a question seems easy — increases the risk of saying something you regret. If needed, ask for the question to be repeated to give yourself thinking time.",
+  },
+  "s5-q1-false": {
+    correct: true,
+    explanation:
+      "Correct. Always pause and consider your answer carefully. Do not 'blurt out' the first thing that comes to mind, even if the question seems simple. You may also refer to your statement or clinical records before responding.",
+  },
+  "s5-q2-true": {
+    correct: false,
+    explanation:
+      "Incorrect. Silence after your answer is a deliberate advocacy technique to pressure witnesses into volunteering extra information. Resist the temptation. When you have finished your answer, stop speaking and wait for the next question.",
+  },
+  "s5-q2-false": {
+    correct: true,
+    explanation:
+      "Correct. Do not fill a silence. When advocates pause after you answer, they are hoping you will add more. Once you have answered the question fully, stop and wait. Do not offer anything further unprompted.",
+  },
+  "s5-q3-true": {
+    correct: true,
+    explanation:
+      "Correct. You are only expected to answer within your area of expertise and experience. If a question falls outside that, clearly say so and decline to speculate. This is both appropriate and expected.",
+  },
+  "s5-q3-false": {
+    correct: false,
+    explanation:
+      "Incorrect. You should state clearly if a question is outside your area of expertise and decline to answer it. Speculating or guessing outside your knowledge risks giving inaccurate evidence and undermining your credibility.",
+  },
   "s4-q1-true": {
     correct: true,
     explanation:

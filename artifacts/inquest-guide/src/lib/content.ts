@@ -181,8 +181,74 @@ export const sections: SectionContent[] = [
     ]
   },
   {
+    id: "giving-evidence",
+    title: "4. Giving Evidence",
+    description: "How to answer questions effectively and professionally in the witness box.",
+    content: [
+      {
+        title: "Taking the Oath and First Impressions",
+        body: [
+          "Once you have taken the oath or affirmed, it is good practice to acknowledge the deceased's family if they are present. A brief, sincere acknowledgement shows empathy and demonstrates that you are genuine — this matters to the family and sets the tone for your evidence.",
+          "Listen carefully to every question before you begin to answer. If you do not catch or fully understand a question, simply ask for it to be repeated. This is not a sign of weakness — it gives you time to think and ensures you answer accurately.",
+          "Consider your answer carefully before speaking. Do not 'blurt out' the first thing that comes to mind, especially when a question seems easy. Pause, think, and if necessary refer to your statement or the clinical records before responding. You may also ask the advocate to repeat the question — this buys thinking time and is entirely acceptable."
+        ],
+        callout: {
+          type: "info",
+          text: "The hearing is not an exam or memory test. If you need to refer to your statement or clinical records to check a detail, do so. If you have forgotten something, say so and ask to refer to your earlier statement."
+        }
+      },
+      {
+        title: "Answering Questions Well",
+        body: [
+          "Answer only the question you are asked — nothing more, nothing less. Do not answer the question you think you were asked, the one you would like to have been asked, or the one you expect to be asked next.",
+          "Beware of pauses. When you have finished answering, if there is a silence and the advocate does not ask another question, do not be tempted to fill it. Remaining silent after a witness answers is a deliberate technique used to pressure witnesses into volunteering additional information. When you have answered, stop speaking.",
+          "Do not guess or make assumptions about what others did or might have done. Stick to what you know from your own direct experience and knowledge.",
+          "Do not venture an opinion unless you are asked for one. If asked, you may give an opinion within your own area of expertise — but not beyond it. If a question falls outside the scope of your expertise, say so clearly and decline to answer.",
+          "Do not comment on the provision of a service generally, or criticise colleagues. If family members ask questions in a confrontational manner, remain calm, polite, and answer as fully and simply as possible. Do not become defensive."
+        ],
+        callout: {
+          type: "warning",
+          text: "If you are being asked questions that appear to directly or indirectly attribute blame or fault to a person or system, raise this with the coroner. Questions at inquest must be directed at establishing how the death occurred — not at apportioning liability."
+        }
+      },
+      {
+        title: "Top Tips for Giving Evidence",
+        body: [
+          "1. Prepare adequately — re-read your statement, the clinical records, and any relevant protocols or policies beforehand.",
+          "2. Decide in advance whether you wish to swear an oath on a holy book or make a non-religious affirmation.",
+          "3. Address the coroner as 'Sir' or 'Ma'am' and direct all your answers to the coroner (and jury, if there is one).",
+          "4. If you do not understand a question, say so. You are entitled to ask for clarification.",
+          "5. Acknowledge the family — the inquest is deeply stressful and upsetting for them. A sincere acknowledgement goes a long way.",
+          "6. If you have observations after hearing other witnesses give evidence, pass these to your legal representative rather than raising them yourself.",
+          "7. Remember the purpose of the inquest: to determine who died, where, when, and how. Keep that purpose in mind throughout your evidence.",
+          "8. Think of it as your opportunity to explain to the family what you know about what happened, so they can better understand the circumstances in which their relative died."
+        ]
+      }
+    ],
+    quiz: [
+      {
+        id: "s5-q1",
+        text: "When asked a question in the witness box, you should answer immediately to avoid appearing hesitant.",
+        correctAnswer: false,
+        explanation: "Incorrect. Always pause and consider your answer carefully. Do not 'blurt out' the first thing that comes to mind, even if the question seems simple. You may also refer to your statement or clinical records before responding."
+      },
+      {
+        id: "s5-q2",
+        text: "If an advocate pauses silently after you finish answering, you should volunteer additional information to fill the silence.",
+        correctAnswer: false,
+        explanation: "Correct. Do not fill a silence. When advocates pause after you answer, they are hoping you will add more. Once you have answered the question fully, stop and wait. Do not offer anything further unprompted."
+      },
+      {
+        id: "s5-q3",
+        text: "If a question falls outside your area of expertise, it is appropriate to say so and decline to answer.",
+        correctAnswer: true,
+        explanation: "Correct. You are only expected to answer within your area of expertise and experience. If a question falls outside that, clearly say so and decline to speculate. This is both appropriate and expected."
+      }
+    ]
+  },
+  {
     id: "post-inquest",
-    title: "4. Post Inquest",
+    title: "5. Post Inquest",
     description: "Conclusions, Regulation 28 reports, and handling criticism.",
     content: [
       {
