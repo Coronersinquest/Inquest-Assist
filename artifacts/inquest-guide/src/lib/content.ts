@@ -130,9 +130,9 @@ export const sections: SectionContent[] = [
     description: "Preparation, witness types, and tips for giving evidence.",
     content: [
       {
-        title: "GMC Guidance on Honesty",
+        title: "Guidance on Honesty",
         body: [
-          "The GMC states you must be honest and trustworthy when giving evidence. You must make sure that any evidence you give or documents you write are not false or misleading.",
+          "You must be honest and trustworthy when giving evidence. You must ensure that any evidence you give or documents you write are not false or misleading.",
           "You must take reasonable steps to check the information is accurate, not deliberately leave out relevant information, not minimize risks of harm, and not present opinion as established fact."
         ]
       },
