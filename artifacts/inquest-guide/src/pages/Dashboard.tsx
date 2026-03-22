@@ -55,7 +55,7 @@ export default function Dashboard() {
                 Start Learning <ChevronRight className="w-5 h-5" />
               </Link>
               <a
-                href="https://www.amazon.co.uk/Clinicians-Brief-Guide-Coroners-Inquests/dp/1009450093/"
+                href="https://www.amazon.co.uk/s?k=a+clinician%27s+brief+guide+to+the+coroner%27s+court+and+inquests&crid=1H0K6W400VYP4&sprefix=%2Caps%2C228&linkCode=ll2&tag=inquestassist-21&linkId=bb3754c44d97d51e1380467d17135329&ref_=as_li_ss_tl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border-2 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/60 transition-all duration-200"
@@ -196,7 +196,7 @@ export default function Dashboard() {
           </p>
         </div>
         <a
-          href="https://www.amazon.co.uk/Clinicians-Brief-Guide-Coroners-Inquests/dp/1009450093/"
+          href="https://www.amazon.co.uk/s?k=a+clinician%27s+brief+guide+to+the+coroner%27s+court+and+inquests&crid=1H0K6W400VYP4&sprefix=%2Caps%2C228&linkCode=ll2&tag=inquestassist-21&linkId=bb3754c44d97d51e1380467d17135329&ref_=as_li_ss_tl"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-md shadow-primary/20 whitespace-nowrap"
