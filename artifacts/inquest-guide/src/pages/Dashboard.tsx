@@ -204,6 +204,17 @@ export default function Dashboard() {
           Buy on Amazon <ExternalLink className="w-3.5 h-3.5" />
         </a>
       </motion.div>
+
+      <div className="text-center pt-2 pb-4">
+        <a
+          href="https://www.drgabriellependlebury.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          drgabriellependlebury.com <ExternalLink className="w-3 h-3" />
+        </a>
+      </div>
     </div>
   );
 }
