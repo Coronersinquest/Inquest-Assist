@@ -7,6 +7,13 @@
   NODE_VERSION = "20"
   NODE_ENV     = "production"
 
+# Serve the Google ownership token before the SPA fallback.
+[[redirects]]
+  from   = "/google5b6bc8146b6047e4.html"
+  to     = "/google-site-verification.txt"
+  status = 200
+  force  = true
+
 # SPA fallback — send all routes to index.html so React Router handles them
 [[redirects]]
   from   = "/*"
